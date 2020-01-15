@@ -105,6 +105,10 @@ $(function () {
             // 启用字幕
             subHtmlSelectorRelative: true
         });
+        //懒加载会和gallery插件会发生冲突，可能就是点开图片，左翻右翻都是loading image。
+        $(document).find('img[data-original]').each(function(){ 
+            $(this).parent().attr("href", $(this).attr("data-original")); 
+        });
 
         // progress bar init
         const progressElement = window.document.querySelector('.progress-bar');
